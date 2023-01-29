@@ -21,8 +21,8 @@
         <transition-group name="list" appear tag="ul">
 
           <!-- Item of Todo -->
-          <li v-for="(todo, index) in allTodos" :key="todo.id">
-            <span>{{ todo.action }}</span>
+          <li v-for="(todo, index) in allTodos" :key="todo.id" @dblclick="completeTodo(todo)">
+            <span :class="{'done': todo.completed}">{{ todo.action }}</span>
             <button @click="deleteTodo(index)">X</button>
           </li>
 
@@ -69,7 +69,8 @@ export default defineComponent({
 
       let newTodoData: Todo = {
         id: Date.now(),
-        action: todo
+        action: todo,
+        completed: false
       }
 
       this.allTodos.unshift(newTodoData);
@@ -78,6 +79,10 @@ export default defineComponent({
     /* Delete Todo */
     deleteTodo(index: number){
       this.allTodos.splice(index, 1);
+    },
+    // Complete Todo
+    completeTodo(todo: Todo){
+      todo.completed = !todo.completed;
     }
   }
 });

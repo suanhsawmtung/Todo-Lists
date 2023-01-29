@@ -65,6 +65,10 @@ li button {
     margin-top: 20px;
 }
 
+.done {
+    text-decoration: line-through;
+}
+
 
 /* list animation */
 

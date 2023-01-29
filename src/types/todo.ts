@@ -1,4 +1,5 @@
 export default interface todo {
     id: number,
-    action: string
+    action: string,
+    completed: boolean
 }
